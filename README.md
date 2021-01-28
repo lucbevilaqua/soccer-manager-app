@@ -4,24 +4,14 @@
 *** Request ou abra uma Issue com a tag "sugestão".
 *** Obrigado novamente! Agora vamos rodar esse projeto incrível :D
 -->
+## Steeps
+- Depois que configurado verificar a instalação, se der erro 'Failed to start the app. Run CLI.
+Commqand failes: C:\Android\Sdk/platform-tools/adb shell am start -n '
+é porque o arquivo foi instalado e deve ser desistalado do device
 
-<!-- PROJECT SHIELDS -->
+- Caso de erro no celular usar esse comando `adb reverse tcp:8081 tcp:8081` [Link](https://stackoverflow.com/questions/42064283/)
 
-[![npm](https://img.shields.io/npm/v/react-native-template-rocketseat-basic.svg?label=npm%20package)](https://www.npmjs.com/package/react-native-template-rocketseat-basic)
-[![npm](https://img.shields.io/npm/dt/react-native-template-rocketseat-basic.svg)](https://www.npmjs.com/package/react-native-template-rocketseat-basic)
-[![GitHub issues](https://img.shields.io/github/issues-raw/rocketseat/react-native-template-rocketseat-basic.svg)](https://github.com/Rocketseat/react-native-template-rocketseat-basic/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/rocketseat/react-native-template-rocketseat-basic.svg)](https://github.com/Rocketseat/react-native-template-rocketseat-basic/commits/master)
-[![NPM](https://img.shields.io/npm/l/react-native-template-rocketseat-basic.svg)](https://choosealicense.com/licenses/mit)
-
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://rocketseat.com.br">
-    <img src="https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/rocketseat_logo_roxa.png" alt="Logo">
-  </a>
-
-  <h3 align="center">Template Rocketseat Basic</h3>
-</p>
+- Rodar em um terminal `npm start` e em outro terminal `react-native run-android`
 
 <!-- TABLE OF CONTENTS -->
 
@@ -247,9 +237,3 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 ## Licença
 
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
-
-<!-- CONTACT -->
-
-## Contato
-
-Rocketseat - [Github](https://github.com/rocketseat) - **oi@rocketseat.com.br**
