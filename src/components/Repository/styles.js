@@ -35,3 +35,20 @@ export const Stat = styled.View`
 export const StatCount = styled.Text`
   margin-left: 6px;
 `;
+
+export const Actions = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
+`;
+
+export const Action = styled.TouchableOpacity`
+  flex-direction: row;
+  margin-right: 10px;
+`;
+
+export const ActionText = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #7159c1;
+  margin-left: 5px;
+`;

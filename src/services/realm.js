@@ -1,9 +1,9 @@
-// import Realm from 'realm';
+import Realm from 'realm';
 
-// import Repository from '../schemas/RepositorySchema';
+import Repository from '../schemas/RepositorySchema';
 
-// export default function getRealm() {
-//   return getRealm.open({
-//     schema: [Repository]
-//   })
-// }
+export default function getRealm() {
+  return Realm.open({
+    schema: [Repository]
+  })
+}
