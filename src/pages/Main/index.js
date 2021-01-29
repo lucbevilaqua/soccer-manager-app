@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Keyboard, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Repository from '~/components/Repository'
+import User from '~/components/User'
 
 import getRealm from '~/services/realm';
 
@@ -15,25 +16,26 @@ import {
 } from './styles';
 
 export default function Main() {
+  const REPOSITORY = 'User';
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
-  const [repositories, setRepositories] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function loadRepository() {
       const realm = await getRealm();
 
-      const data = realm.objects('Repository').sorted('id', true);
-      setRepositories(data);
+      const data = realm.objects(REPOSITORY).sorted('name');
+      setUsers(data);
     }
 
     loadRepository();
   }, []);
 
-  async function saveRepository() {
+  async function saveUser() {
     try {
       const realm = await getRealm();
-      let id = realm.objects('Repository').max('id');
+      let id = realm.objects(REPOSITORY).max('id');
       const data = {
         id: id === undefined ? 1 : ++id,
         name: input,
@@ -44,7 +46,7 @@ export default function Main() {
       }
 
       realm.write(() => {
-        realm.create('Repository', data, 'modified');
+        realm.create(REPOSITORY, data, 'modified');
       });
 
       setInput('');
@@ -57,26 +59,16 @@ export default function Main() {
     }
   }
 
-  async function handleRefreshRepository(repository) {
-    try {
-      const data = await saveRepository(repository);
-
-      setRepositories(repositories.map(repo => repo.id === data.id ? data : repo));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function handleDeletehRepository(repository) {
+  async function handleDeleteUser(userSelected) {
     try {
       const realm = await getRealm();
-      const id = repository.id;
+      const id = userSelected.id;
 
-      setRepositories(repositories.filter(repo => repo.id !== id));
+      setUsers(users.filter(user => user.id !== id));
 
       realm.write(() => {
         realm.delete(
-          realm.objects('Repository').filtered('id =' + id)
+          realm.objects(REPOSITORY).filtered('id =' + id)
         );
       });
 
@@ -87,11 +79,11 @@ export default function Main() {
 
   function promptDelete(item) {
     Alert.alert(
-      'Delete Character',
-      'Deleting is irreversible, are you sure?',
+      'Deletar Usuario',
+      'A deleção é permanente, tem certeza ?',
       [
-        { text: 'Cancel', onPress: () => false },
-        { text: 'OK', onPress: () => handleDeletehRepository(item) }
+        { text: 'Cancelar', onPress: () => false },
+        { text: 'Sim', onPress: () => handleDeleteUser(item) }
       ],
       { cancelable: false }
     );
@@ -111,19 +103,18 @@ export default function Main() {
           autoCorrect={false}
           placeholder="Cadastrar jogador ..."
         />
-        <Submit onPress={saveRepository}>
+        <Submit onPress={saveUser}>
           <Icon name="add" size={22} color="#FFF" />
         </Submit>
       </Form>
 
       <List
         keyboardShouldPersistTaps="handled"
-        data={repositories}
+        data={users}
         keyExtractor={item => String(item.id)}
         renderItem={ ({ item }) => (
-          <Repository
+          <User
             data={item}
-            onEdit={() => handleRefreshRepository(item)}
             onDelete={() => promptDelete(item)}
           />
         )}/>
