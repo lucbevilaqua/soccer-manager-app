@@ -45,23 +45,24 @@ export default function DrawTeam() {
     loadRepository();
   }, []);
 
-  function draw(aray) {
+  function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function draw() {
     setUsers(users.shuffle());
     createTeams();
   }
 
   function separator(base, max) {
-    var res = [];
-    var parts = base.length/max;
+    const res = [];
+    const parts = (base.length + 1)/max;
+    const baseCopy = base.map((item) => item);
 
-    // for (let index = 0; index < parts; index++) {
-    //   if(index === 0)
-    //     res.push(base.slice(index, max-1))
-    //   else
-    //     res.push(base.slice(index*max, max-1))
-    // }
-    res.push(base.slice(0, max-1))
-    res.push(base.slice(5, 9))
+    console.log(baseCopy)
+    for (let part = 0; part < parts; part++) {
+      res.push(baseCopy.splice(0, max));
+    }
 
     return res;
   }
@@ -69,8 +70,13 @@ export default function DrawTeam() {
   function createTeams() {
     var result = separator(users, 5);
     const newTeams = [];
-    result.forEach((res, index) => {
-      newTeams.push({ id: index*10, name: 'oi', users: res });
+    result.forEach((res) => {
+      newTeams.push(
+        {
+          id: randomInteger(1000, 100),
+          users: res
+        }
+      );
     });
 
     setTeams(newTeams);
