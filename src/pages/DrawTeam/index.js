@@ -51,7 +51,7 @@ export default function DrawTeam() {
     result.forEach((res) => {
       // Não compensa criar outro time pois não sabemos qual irá perder
       // if (res.length < usersPerTeam) {
-      //   const newTeam = result[randomInteger(0, result.length)];
+      //   const newTeam = result[randomInteger(0, result.length)].map((item) => item);
       //   newTeam.splice(0, res.length);
       //   res = res.concat(newTeam);
       // }
@@ -68,7 +68,7 @@ export default function DrawTeam() {
 
   return (
     <Container>
-      <Title>Times</Title>
+      <Title>Times ({teams.length})</Title>
       <Form>
         <Submit onPress={draw}>
           <AntDesign name="playcircleo" size={42} color="#FFF" />

@@ -16,6 +16,7 @@ export const Title = styled.Text`
   color: #FFF;
   font-weight: bold;
   padding: 0 20px;
+  text-align: center;
 `;
 
 export const Form = styled.View`

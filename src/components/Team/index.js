@@ -9,18 +9,6 @@ import {
 
 export default function Team ({ data, index }) {
 
-  function promptDelete(item) {
-    Alert.alert(
-      'Deletar Usuario',
-      'A deleção é permanente, tem certeza ?',
-      [
-        { text: 'Cancelar', onPress: () => false },
-        { text: 'Sim', onPress: () => handleDeleteUser(item) }
-      ],
-      { cancelable: false }
-    );
-  }
-
   return (
     <Container>
       <Title>Time { index + 1}</Title>
@@ -32,7 +20,6 @@ export default function Team ({ data, index }) {
           <>
             <User
               data={item}
-              onDelete={() => promptDelete(item)}
             />
           </>
         )} />

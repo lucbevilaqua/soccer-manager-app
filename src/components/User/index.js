@@ -18,12 +18,15 @@ export default function User({ data, onDelete }) {
         <IconAwesome name="user-circle-o" size={36} color="#7159c1"/>
         <Name>{ data.name }</Name>
 
-        <Actions>
-          <Action onPress={ onDelete }>
-            <Icon name="delete" size={18} color="#7159c1" />
-            <ActionText>Excluir</ActionText>
-          </Action>
-        </Actions>
+        {
+          onDelete &&
+          <Actions >
+            <Action onPress={ onDelete }>
+              <Icon name="delete" size={18} color="#7159c1" />
+              <ActionText>Excluir</ActionText>
+            </Action>
+          </Actions>
+        }
       </Body>
     </Container>
   );
