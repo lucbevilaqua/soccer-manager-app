@@ -13,7 +13,7 @@ Commqand failes: C:\Android\Sdk/platform-tools/adb shell am start -n '
 
 - Rodar em um terminal `npm start` e em outro terminal `react-native run-android`
 - Gerar Icons [Link](https://appicon.co/)
-- Generate APK `gradlew assembleRelease`
+- Generate APK `gradlew assembleRelease` [Link](https://tableless.com.br/react-native-build-release-android/)
 <!-- TABLE OF CONTENTS -->
 
 ## Tabela de Conteúdo

@@ -43,6 +43,8 @@ export default function Pay() {
     loadUsers();
     if (users.length > 0 && +totalPayment > 0) {
       setUnityPayment((+totalPayment/users.length).toFixed(2));
+    } else {
+      setTotalPayment(0);
     }
   }
 
