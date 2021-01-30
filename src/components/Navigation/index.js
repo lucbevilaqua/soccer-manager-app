@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Main from '~/pages/Main';
 import DrawTeam from '~/pages/DrawTeam';
+import Pay from '~/pages/Pay';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -34,6 +35,17 @@ export default function Navigation() {
           component={DrawTeam}
           options={{
             tabBarLabel: 'Draw Team',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="team" color={color} size={size} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Pay Soccer"
+          component={Pay}
+          options={{
+            tabBarLabel: 'Pay Soccer',
             tabBarIcon: ({ color, size }) => (
               <Icon name="team" color={color} size={size} />
             ),

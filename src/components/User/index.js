@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
   Container,
@@ -11,7 +12,9 @@ import {
   ActionText
 } from './styles';
 
-export default function User({ data, onDelete }) {
+export default function User({ data, onDelete, wasCheckbox }) {
+  const [isChecked, setChecked] = useState(false);
+
   return (
     <Container>
       <Body>
@@ -27,6 +30,25 @@ export default function User({ data, onDelete }) {
             </Action>
           </Actions>
         }
+
+        {
+          wasCheckbox &&
+          <Actions >
+            <Action onPress={ () => setChecked(!isChecked)  }>
+              {
+                isChecked &&
+                <MaterialCommunityIcons name="checkbox-marked" size={18} color="#7159c1" />
+              }
+              {
+                !isChecked &&
+                <MaterialCommunityIcons name="checkbox-blank-outline" size={18} color="#7159c1" />
+              }
+              <ActionText>Pago</ActionText>
+            </Action>
+          </Actions>
+        }
+
+
       </Body>
     </Container>
   );
