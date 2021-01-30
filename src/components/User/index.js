@@ -25,7 +25,7 @@ export default function User({ data, onDelete, wasCheckbox }) {
           onDelete &&
           <Actions >
             <Action onPress={ onDelete }>
-              <Icon name="delete" size={18} color="#7159c1" />
+              <Icon name="delete" size={22} color="#7159c1" />
               <ActionText>Excluir</ActionText>
             </Action>
           </Actions>
@@ -37,11 +37,11 @@ export default function User({ data, onDelete, wasCheckbox }) {
             <Action onPress={ () => setChecked(!isChecked)  }>
               {
                 isChecked &&
-                <MaterialCommunityIcons name="checkbox-marked" size={18} color="#7159c1" />
+                <MaterialCommunityIcons name="checkbox-marked" size={22} color="#7159c1" />
               }
               {
                 !isChecked &&
-                <MaterialCommunityIcons name="checkbox-blank-outline" size={18} color="#7159c1" />
+                <MaterialCommunityIcons name="checkbox-blank-outline" size={22} color="#7159c1" />
               }
               <ActionText>Pago</ActionText>
             </Action>

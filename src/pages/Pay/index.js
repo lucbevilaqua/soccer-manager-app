@@ -61,7 +61,7 @@ export default function Pay() {
           placeholder="Total a Pagar(R$)..."
         />
         <Submit onPress={calculateUnity}>
-          <Icon name="calculator-variant" size={28} color="#FFF" />
+          <Icon name="cash-usd-outline" size={28} color="#FFF" />
         </Submit>
       </Form>
 
