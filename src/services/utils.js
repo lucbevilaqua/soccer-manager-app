@@ -16,7 +16,7 @@ export function randomInteger(min, max) {
 
 export function separator(base, max) {
   const res = [];
-  const parts = (base.length + 1)/max;
+  const parts = (base.length)/max;
   const baseCopy = base.map((item) => item);
 
   for (let part = 0; part < parts; part++) {

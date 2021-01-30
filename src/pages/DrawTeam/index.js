@@ -15,38 +15,46 @@ import {
 
 export default function DrawTeam() {
   const REPOSITORY = 'User';
+  const [usersPerTeam, setUsersPerTeam] = useState(5);
   const [users, setUsers] = useState([]);
   const [teams, setTeams] = useState([]);
 
+  async function loadUsers() {
+    const realm = await getRealm();
+
+    const data = realm.objects(REPOSITORY).sorted('id');
+
+    const array = data.map((value) => {
+      return {
+        id: value.id,
+        name: value.name
+      }
+    });
+
+    setUsers(array);
+  }
+
   useEffect(() => {
-    async function loadRepository() {
-      const realm = await getRealm();
-
-      const data = realm.objects(REPOSITORY).sorted('id');
-
-      const array = data.map((value) => {
-        return {
-          id: value.id,
-          name: value.name
-        }
-      });
-
-      setUsers(array);
-    }
-
-    loadRepository();
+    loadUsers();
   }, []);
 
 
   function draw() {
+    loadUsers();
     setUsers(users.shuffle());
     createTeams();
   }
 
   function createTeams() {
-    var result = separator(users, 5);
+    var result = separator(users, usersPerTeam);
     const newTeams = [];
     result.forEach((res) => {
+      // Não compensa criar outro time pois não sabemos qual irá perder
+      // if (res.length < usersPerTeam) {
+      //   const newTeam = result[randomInteger(0, result.length)];
+      //   newTeam.splice(0, res.length);
+      //   res = res.concat(newTeam);
+      // }
       newTeams.push(
         {
           id: randomInteger(1000, 100),

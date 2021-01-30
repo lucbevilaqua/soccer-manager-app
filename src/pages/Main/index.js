@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Keyboard, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Repository from '~/components/Repository'
 import User from '~/components/User'
 
 import getRealm from '~/services/realm';
@@ -22,14 +21,14 @@ export default function Main() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    async function loadRepository() {
+    async function loadUsers() {
       const realm = await getRealm();
 
       const data = realm.objects(REPOSITORY).sorted('name');
       setUsers(data);
     }
 
-    loadRepository();
+    loadUsers();
   }, []);
 
   async function saveUser() {
@@ -38,11 +37,7 @@ export default function Main() {
       let id = realm.objects(REPOSITORY).max('id');
       const data = {
         id: id === undefined ? 1 : ++id,
-        name: input,
-        description: 'deu bom',
-        fullName: 'deu bom caramba',
-        stars: 2222,
-        forks: 5454,
+        name: input
       }
 
       realm.write(() => {
@@ -92,7 +87,7 @@ export default function Main() {
 
   return (
     <Container>
-      <Title>Jogadores</Title>
+      <Title>Jogadores ({users.length})</Title>
 
       <Form>
         <Input
