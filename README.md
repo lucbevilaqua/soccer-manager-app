@@ -12,7 +12,8 @@ Commqand failes: C:\Android\Sdk/platform-tools/adb shell am start -n '
 - Caso de erro no celular usar esse comando `adb reverse tcp:8081 tcp:8081` [Link](https://stackoverflow.com/questions/42064283/)
 
 - Rodar em um terminal `npm start` e em outro terminal `react-native run-android`
-
+- Gerar Icons [Link](https://appicon.co/)
+- Generate APK `gradlew assembleRelease`
 <!-- TABLE OF CONTENTS -->
 
 ## Tabela de Conteúdo

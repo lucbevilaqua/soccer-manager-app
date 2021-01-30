@@ -40,7 +40,10 @@ export default function Pay() {
   }, []);
 
   function calculateUnity() {
-    setUnityPayment((+totalPayment/users.length).toFixed(2));
+    loadUsers();
+    if (users.length > 0 && +totalPayment > 0) {
+      setUnityPayment((+totalPayment/users.length).toFixed(2));
+    }
   }
 
   return (
