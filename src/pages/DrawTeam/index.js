@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import Team from '~/components/Team';
 import getRealm from '~/services/realm';
@@ -9,13 +8,15 @@ import {
   Container,
   Title,
   Form,
+  Input,
   Submit,
   List
 } from './styles';
 
 export default function DrawTeam() {
   const REPOSITORY = 'User';
-  const [usersPerTeam, setUsersPerTeam] = useState(5);
+  const [usersPerTeam, setUsersPerTeam] = useState('5');
+  const [error, setError] = useState(false);
   const [users, setUsers] = useState([]);
   const [teams, setTeams] = useState([]);
 
@@ -46,11 +47,11 @@ export default function DrawTeam() {
   }
 
   function createTeams() {
-    var result = separator(users, usersPerTeam);
+    var result = separator(users, +usersPerTeam);
     const newTeams = [];
     result.forEach((res) => {
       // Não compensa criar outro time pois não sabemos qual irá perder
-      // if (res.length < usersPerTeam) {
+      // if (res.length < +usersPerTeam) {
       //   const newTeam = result[randomInteger(0, result.length)].map((item) => item);
       //   newTeam.splice(0, res.length);
       //   res = res.concat(newTeam);
@@ -70,12 +71,18 @@ export default function DrawTeam() {
     <Container>
       <Title>Times ({teams.length})</Title>
       <Form>
+        <Input
+          keyboardType='numeric'
+          value={usersPerTeam}
+          error={error}
+          onChangeText={ setUsersPerTeam }
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Numero de jogadores por time..."
+        />
         <Submit onPress={draw}>
-          <AntDesign name="playcircleo" size={42} color="#FFF" />
+          <EntypoIcon name="shuffle" size={22} color="#FFF" />
         </Submit>
-        {/* <Submit onPress={draw}>
-          <EntypoIcon name="ccw" size={22} color="#FFF" />
-        </Submit> */}
       </Form>
 
       <List

@@ -25,12 +25,25 @@ export const Form = styled.View`
   padding: 0 20px;
 `;
 
+
+export const Input = styled.TextInput.attrs({
+  placeholderTextColor: '#999',
+})`
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 16px;
+  font-size: 16px;
+  color: #333;
+  background: #FFF;
+  border: 2px solid ${ props => props.error ? '#FF7272' : '#FFF'};
+`;
+
 export const Submit = styled.TouchableOpacity`
-  background: #6bd4c1;
+  background: #4889D9;
   margin-left: 10px;
   justify-content: center;
   border-radius: 4px;
-  padding:20px;
+  padding: 0 14px;
 `;
 
 export const List = styled.FlatList.attrs({
